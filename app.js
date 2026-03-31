@@ -1,10 +1,9 @@
-const http = require('http')
-const server = http.createServer((req,res)=>{
-  res.statusCode = 200 
-  res.end('bye')
-  
+const express  = require('express')
+const app = express()
+app.use((req,res,next)=>{
+    console.log("middle ware is running")
+    next()
 })
-
-server.listen(3000,()=>{
-    console.log("3000")
+app.listen(3000,()=>{
+    console.log("running at 3000")
 })
