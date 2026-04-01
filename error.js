@@ -1,21 +1,26 @@
 const express = require('express')
 const app = express()
-
-app.get("/bankbalance",(req,res,next)=>{
-    const isserverdown = true;
-    if(isserverdown){
-        const myerr = new Error("data is not working")
-        myerr.status=500;
-        return next(myerr)
-    }
-    res.send("you  hav 1000 bank balance")
-
+app.get("/",(req,res)=>{
+    res.send("home page")
+})
+app.get("/errortest",(req,res,next)=>{
+  const err = new Error("manual eroor")
+  err.status=400
+  next(err)
+})
+app.use((req,res,next)=>{
+    const err = new Error("route not found")
+    err.status =401;
+    next(err)
 })
 app.use((err,req,res,next)=>{
-    const status = err.statuscode || 500;
-    res.status(status).send(`Error Alert: ${err.message}`);
+    const status = err.status || 500
+    console.log(`Error ${status} : {err.message}`)
+    res.status(status).json({
+        success:false,
+        message:err.message,
+    })
 })
-
 app.listen(5000,()=>{
     console.log("running at port 5000")
 })
