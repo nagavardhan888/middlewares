@@ -10,8 +10,10 @@ app.get("/profile",(req,res)=>{
     const user = db.findById()
     if(!user){
         const error = new Error("user not found")
-        
+        error.status = 400
+        return next(error)
     }
+    res.send(user)
 }) 
 
 app.listen(5000,()=>{
