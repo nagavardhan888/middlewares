@@ -13,6 +13,16 @@ app.get("/errortest",(req,res,next)=>{
   err.status=400
   next(err)
 })
+app.get("/randmath",(req,res,next)=>{
+    const num = Math.floor(  Math.random() * 10)
+    if (num>5){
+        const dberror = new Error("data base destroyed")
+        dberror.status=500
+        next(dberror)
+    }
+    res.send("you just survived brooo")
+})
+    
 app.use((req,res,next)=>{
     const err = new Error("route not found")
     err.status =401;
