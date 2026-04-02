@@ -20,9 +20,11 @@ app.use((req,res,next)=>{
 })
 app.use((err,req,res,next)=>{
     const status = err.status || 500
+    const time = new Date().toISOString();
     res.status(status).json({
         "oops ! our server tripped":err.message,
-        "status":status
+        "status":status,
+        "timestamp":time
     })
     console.log(`Error ${status} :  ${err.message}`)    
     })
