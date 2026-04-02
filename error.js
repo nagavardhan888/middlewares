@@ -22,10 +22,20 @@ app.get("/randmath",(req,res,next)=>{
     }
     res.send("you just survived brooo")
 })
-    
+app.get("user/:id",(req,res,next)=>{
+    try{
+        const user = user.findById(req.params.id)
+        res.send(user)
+    }catch(err){
+        err.status = 500
+        err.message = "database error"
+        next(err)
+    }
+})
 app.use((req,res,next)=>{
     const err = new Error("route not found")
     err.status =401;
+   
     next(err)
 })
 app.use((err,req,res,next)=>{
@@ -34,7 +44,7 @@ app.use((err,req,res,next)=>{
     res.status(status).json({
         "oops ! our server tripped":err.message,
     })
-    console.log(`Error ${status} : {err.message}`)
+    console.log(`Error ${status} : ${err.message}`)
 })
 
 app.listen(5000,()=>{
