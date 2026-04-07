@@ -35,6 +35,7 @@ app.use((err,req,res,next)=>{
             "oops ! our server tripped":`email ${err.keyValue.email} already exists`,
             "status":400
         })
+        
     }else{
     res.status(status).json({
         "oops ! our server tripped":err.message,

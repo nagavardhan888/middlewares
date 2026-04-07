@@ -35,6 +35,6 @@ let {status , message="some error occured"}= err
 res.status(status).send(message)
 })
 
-app.listen(3000,()=>{
+app.listen(8000,()=>{
     console.log("running at 3000")
 })
