@@ -18,7 +18,7 @@ app.get("/api",checktoken,(req,res)=>{
     res.send("data")
 })
 app.get("/",(req,res)=>{
-    res.send("app was running at main page")
+    res.send("app was running at /  route ")
 })
 
 app.get("/random",(req,res)=>{
