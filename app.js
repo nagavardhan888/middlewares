@@ -22,8 +22,9 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/random",(req,res)=>{
-    res.send("random info here ")
+    res.send("random info available here  ")
 })
+
 app.get("/err",(req,res)=>{
     abcd = abcd
 })
