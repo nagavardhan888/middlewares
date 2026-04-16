@@ -31,11 +31,12 @@ app.get("/err",(req,res)=>{
 app.get("/admin",(req,res)=>{
     throw new expresserror(403,"Acess to admmin is  forbideen")
 })
+
 app.use((err,req,res,next)=>{
 let {status , message="some error occured"}= err
 res.status(status).send(message)
 })
 
 app.listen(8000,()=>{
-    console.log("running at 3000")
+    console.log("running at  8000")
 })
