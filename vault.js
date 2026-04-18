@@ -30,6 +30,6 @@ app.use((err,req,res,next)=>{
     })
     console.log(`Error ${status} :  ${err.message}`)
 })
-app.listen(3000,()=>{
-    console.log("running at port 3000")
+app.listen(8080,()=>{
+    console.log("running at port 8080")
 })
